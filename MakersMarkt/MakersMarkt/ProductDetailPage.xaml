@@ -7,6 +7,12 @@
     <Grid Padding="30">
         <StackPanel Spacing="20" HorizontalAlignment="Center" Width="400">
 
+            <!-- Go Back Button -->
+            <Button Content="⬅ Go Back" Click="GoBack_Click"
+                    Width="120" Background="#DDDDDD" Foreground="Black"
+                    CornerRadius="8" Padding="8,4"
+                    HorizontalAlignment="Left"/>
+
             <Border Background="White" Padding="20" CornerRadius="10" 
                     BorderBrush="Gray" BorderThickness="1">
             </Border>
