@@ -9,24 +9,22 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBox x:Name="SearchBox" PlaceholderText="Search products..." Width="300" TextChanged="SearchBox_TextChanged"/>
-                <ComboBox x:Name="CategoryDropdown" Width="150" SelectionChanged="CategoryDropdown_SelectionChanged">
-                    <ComboBoxItem Content="All Categories" IsSelected="True"/>
-                    <ComboBoxItem Content="Electronics"/>
-                    <ComboBoxItem Content="Clothing"/>
-                    <ComboBoxItem Content="Home n Kitchen"/>
-                </ComboBox>
+
+                <ComboBox x:Name="CategoryDropdown" Width="150" SelectionChanged="CategoryDropdown_SelectionChanged"/>
             </StackPanel>
 
-            <ListView x:Name="ProductListView" ItemsSource="{x:Bind Products}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local:Product">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="{x:Bind Name}" FontSize="20" FontWeight="Bold"/>
-                            <TextBlock Text="{x:Bind Description}" Foreground="Gray"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
+                <ListView x:Name="ProductListView" ItemsSource="{x:Bind Products}" SelectionChanged="ProductListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Product">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="{x:Bind Name}" FontSize="20" FontWeight="Bold"/>
+                                <TextBlock Text="{x:Bind Description}" Foreground="Gray"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
         </StackPanel>
     </Grid>
 </Page>
