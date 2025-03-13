@@ -14,6 +14,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="LoginWindow.xaml" />
+    <None Remove="Moderator\ModeratorProductListPage.xaml" />
+    <None Remove="Moderator\ModeratorUserListPage.xaml" />
     <None Remove="Moderator\ModeratorWindow.xaml" />
   </ItemGroup>
 
@@ -43,6 +45,16 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Moderator\ModeratorProductListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Moderator\ModeratorUserListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
     <PropertyGroup>
         <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
