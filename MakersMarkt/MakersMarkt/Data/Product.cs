@@ -7,12 +7,11 @@ using Windows.Globalization.DateTimeFormatting;
 
 namespace MakersMarkt.Data
 {
-    public class Product
+    class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
         public int TypeId { get; set; }
         public string Material { get; set; }
         public DateTime ProductionTime { get; set; }

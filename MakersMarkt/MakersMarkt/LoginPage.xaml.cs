@@ -64,11 +64,11 @@ namespace MakersMarkt
                             break;
 
                         case 2:
-                            this.Frame.Navigate(typeof(Maker.MakerPage));
+                            this.Frame.Navigate(typeof(Moderator.ModeratorPage));
                             break;
 
                         case 3:
-                            this.Frame.Navigate(typeof(User.UserPage));
+                            this.Frame.Navigate(typeof(Moderator.ModeratorPage));
                             break;
                     }
                 }
