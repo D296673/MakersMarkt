@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bogus;
 using MakersMarkt.Data;
+using System.Globalization;
 
 namespace MakersMarkt.Data
 {
@@ -125,7 +126,7 @@ namespace MakersMarkt.Data
                 .RuleFor(p => p.Complexity, f => f.Commerce.ProductAdjective())
                 .RuleFor(p => p.Durability, f => f.Random.Number(1, 10))
                 .RuleFor(p => p.UniqueFeatures, f => f.Commerce.ProductAdjective())
-                .RuleFor(p => p.Price, f => f.Random.Decimal(1, 1000))
+                .RuleFor(p => p.Price, f => Math.Round((decimal)f.Finance.Amount(1, 1000), 2))
                 .RuleFor(p => p.CreatedAt, f => f.Date.Past())
                 .RuleFor(p => p.Status, f => f.PickRandom("Available", "Unavailable"))
                 .RuleFor(p => p.MakerId, f => f.Random.Number(1, 5))

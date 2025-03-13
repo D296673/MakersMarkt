@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace MakersMarkt.Data
         public string Complexity { get; set; }
         public int Durability { get; set; }
         public string UniqueFeatures { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")] // Specify precision and scale for Price
         public decimal Price { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Status { get; set; }
