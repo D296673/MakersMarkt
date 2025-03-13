@@ -37,7 +37,10 @@
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
   </ItemGroup>
-
+	
+    <PropertyGroup>
+        <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
+    </PropertyGroup>
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
     Explorer "Package and Publish" context menu entry to be enabled for this project even if
