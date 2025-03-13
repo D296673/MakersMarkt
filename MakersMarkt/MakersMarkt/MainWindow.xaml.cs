@@ -32,14 +32,7 @@ namespace MakersMarkt
                 db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
             }
-
-            var baseWindow = new LoginWindow();
-
-            baseWindow.Activate();
-            DispatcherQueue.TryEnqueue(() =>
-            {
-                this.Close();
-            });
+            MainFrame.Navigate(typeof(LoginPage));
         }
 
     }

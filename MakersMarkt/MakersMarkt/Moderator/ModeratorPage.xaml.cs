@@ -19,11 +19,11 @@ using Microsoft.UI.Xaml.Navigation;
 namespace MakersMarkt.Moderator
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ModeratorWindow : Window
+    public sealed partial class ModeratorPage : Page
     {
-        public ModeratorWindow()
+        public ModeratorPage()
         {
             this.InitializeComponent();
         }

@@ -1,3 +1,4 @@
+using MakersMarkt.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -23,9 +24,59 @@ namespace MakersMarkt
     /// </summary>
     public sealed partial class LoginPage : Page
     {
+        private int _userId { get; set; }
         public LoginPage()
         {
             this.InitializeComponent();
+        }
+
+        public static string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                string name = NameTextBox.Text;
+                string password = PasswordTextBox.Password;
+                string hashedPassword = HashPassword(password); // Hash the entered password
+
+                // Compare the hashed password with the stored hashed password
+                var user = db.Users.FirstOrDefault(u => u.Name == name && u.Password == hashedPassword);
+
+                if (user != null)
+                {
+                    int RoleId = user.RoleId;
+                    int userId = user.Id;
+                    _userId = userId;
+                    Data.User.LoggedInUser = user;
+
+                    switch (RoleId)
+                    {
+                        case 1:
+                            MainFrame.Navigate(typeof(Moderator.ModeratorPage));
+                            break;
+
+                        case 2:
+                            MainFrame.Navigate(typeof(Moderator.ModeratorPage));
+                            break;
+
+                        case 3:
+                            MainFrame.Navigate(typeof(Moderator.ModeratorPage));
+                            break;
+                    }
+                }
+                else
+                {
+                    ErrorTextBlock.Text = "Naam of wachtwoord is onjuist";
+                }
+            }
         }
     }
 }

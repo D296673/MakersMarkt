@@ -55,7 +55,7 @@ namespace MakersMarkt.Data
                 {
                     Id = 1,
                     Name = "mod",
-                    Password = LoginWindow.HashPassword("Mod"),
+                    Password = LoginPage.HashPassword("09876543w3sdfrtgy6t5rdertyuhy6t5rdesxcgyh6t5rdesdfgyhuioy7t6r5edrgfygut76r5etyhgfjuyt6redfgyut76r5esdfygu7t6r5edtfjguhy7t6r5edfjygu7t6r5erdtfygu87t6r5dfghuy7t6rdfghuiuy87t6rdfghuy7t6rdtjfgyu7t6rdtfygu7t6r5dtfyguy7t6rdtfygt76r5edtrjfygu87t6r5dtfyguy7t6rdtfyguhy7t6rftyguy7t6r"),
                     RoleId = 1,
                     CreatedAt = DateTime.Now
                 },
@@ -63,7 +63,7 @@ namespace MakersMarkt.Data
                 {
                     Id = 2,
                     Name = "maker",
-                    Password = LoginWindow.HashPassword("Maker"),
+                    Password = LoginPage.HashPassword("Maker"),
                     RoleId = 2,
                     CreatedAt = DateTime.Now
                 },
@@ -71,7 +71,7 @@ namespace MakersMarkt.Data
                 {
                     Id = 3,
                     Name = "user",
-                    Password = LoginWindow.HashPassword("User"),
+                    Password = LoginPage.HashPassword("User"),
                     RoleId = 3,
                     CreatedAt = DateTime.Now
                 },
@@ -79,7 +79,7 @@ namespace MakersMarkt.Data
                 {
                     Id = 4,
                     Name = "maker2",
-                    Password = LoginWindow.HashPassword("Maker2"),
+                    Password = LoginPage.HashPassword("Maker2"),
                     RoleId = 2,
                     CreatedAt = DateTime.Now
                 },
@@ -87,7 +87,7 @@ namespace MakersMarkt.Data
                 {
                     Id = 5,
                     Name = "maker3",
-                    Password = LoginWindow.HashPassword("Maker3"),
+                    Password = LoginPage.HashPassword("Maker3"),
                     RoleId = 2,
                     CreatedAt = DateTime.Now
                 }
