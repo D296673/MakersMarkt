@@ -13,8 +13,29 @@
                     CornerRadius="8" Padding="8,4"
                     HorizontalAlignment="Left"/>
 
+            <!-- Product Details Card -->
             <Border Background="White" Padding="20" CornerRadius="10" 
                     BorderBrush="Gray" BorderThickness="1">
+                <StackPanel Spacing="15">
+
+                    <!-- Product Name -->
+                    <TextBlock x:Name="ProductName" FontSize="22" FontWeight="Bold" 
+                               TextAlignment="Center" Foreground="Black"/>
+
+                    <!-- Product Price -->
+                    <TextBlock x:Name="ProductPrice" FontSize="18" FontWeight="SemiBold"
+                               Foreground="DarkGreen" TextAlignment="Center"/>
+
+                    <!-- Product Description -->
+                    <TextBlock x:Name="ProductDescription" TextWrapping="WrapWholeWords"
+                               FontSize="16" Foreground="Gray" TextAlignment="Center"/>
+
+                    <!-- Buy Button -->
+                    <Button Content="🛒 Buy Now" Click="BuyButton_Click" 
+                            Background="#28a745" Foreground="White"
+                            FontSize="18" Padding="10" CornerRadius="8"
+                            HorizontalAlignment="Center"/>
+                </StackPanel>
             </Border>
         </StackPanel>
     </Grid>
