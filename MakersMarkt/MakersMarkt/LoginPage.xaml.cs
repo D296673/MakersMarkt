@@ -60,15 +60,15 @@ namespace MakersMarkt
                     switch (RoleId)
                     {
                         case 1:
-                            MainFrame.Navigate(typeof(Moderator.ModeratorPage));
+                            this.Frame.Navigate(typeof(Moderator.ModeratorPage));
                             break;
 
                         case 2:
-                            MainFrame.Navigate(typeof(Moderator.ModeratorPage));
+                            this.Frame.Navigate(typeof(Moderator.ModeratorPage));
                             break;
 
                         case 3:
-                            MainFrame.Navigate(typeof(Moderator.ModeratorPage));
+                            this.Frame.Navigate(typeof(Moderator.ModeratorPage));
                             break;
                     }
                 }

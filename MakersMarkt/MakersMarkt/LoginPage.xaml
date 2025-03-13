@@ -30,6 +30,5 @@
                 <Button x:Name="LoginButton" Click="LoginButton_Click"  FontSize="30" Margin="0 25 0 0" Padding="30 10 30 10"  HorizontalAlignment="Center">Login</Button>
             </StackPanel>
         </StackPanel>
-        <Frame x:Name="MainFrame" />
     </Grid>
 </Page>

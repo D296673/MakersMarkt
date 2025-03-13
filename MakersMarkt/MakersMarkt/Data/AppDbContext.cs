@@ -55,7 +55,7 @@ namespace MakersMarkt.Data
                 {
                     Id = 1,
                     Name = "mod",
-                    Password = LoginPage.HashPassword("09876543w3sdfrtgy6t5rdertyuhy6t5rdesxcgyh6t5rdesdfgyhuioy7t6r5edrgfygut76r5etyhgfjuyt6redfgyut76r5esdfygu7t6r5edtfjguhy7t6r5edfjygu7t6r5erdtfygu87t6r5dfghuy7t6rdfghuiuy87t6rdfghuy7t6rdtjfgyu7t6rdtfygu7t6r5dtfyguy7t6rdtfygt76r5edtrjfygu87t6r5dtfyguy7t6rdtfyguhy7t6rftyguy7t6r"),
+                    Password = LoginPage.HashPassword("Mod"),
                     RoleId = 1,
                     CreatedAt = DateTime.Now
                 },
