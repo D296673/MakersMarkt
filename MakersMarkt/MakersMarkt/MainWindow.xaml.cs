@@ -1,3 +1,4 @@
+using MakersMarkt.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,11 +27,20 @@ namespace MakersMarkt
         public MainWindow()
         {
             this.InitializeComponent();
+            using (var db = new AppDbContext())
+            {
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+            }
+
+            var baseWindow = new LoginWindow();
+
+            baseWindow.Activate();
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                this.Close();
+            });
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
-        {
-            myButton.Content = "Clicked";
-        }
     }
 }
