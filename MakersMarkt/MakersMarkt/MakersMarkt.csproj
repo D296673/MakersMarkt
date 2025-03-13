@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -15,7 +15,6 @@
   <ItemGroup>
     <None Remove="LoginWindow.xaml" />
     <None Remove="Moderator\ModeratorWindow.xaml" />
-    <None Remove="ProfilePage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,11 +43,6 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="ProfilePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
     <PropertyGroup>
         <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
