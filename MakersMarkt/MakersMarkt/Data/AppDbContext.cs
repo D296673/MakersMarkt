@@ -129,6 +129,7 @@ namespace MakersMarkt.Data
                 .RuleFor(p => p.CreatedAt, f => f.Date.Past())
                 .RuleFor(p => p.Status, f => f.PickRandom("Available", "Unavailable"))
                 .RuleFor(p => p.MakerId, f => f.Random.Number(1, 5))
+                .RuleFor(p => p.Category, f => f.PickRandom(new[] { "Electronics", "Clothing", "Home & Kitchen", "Toys", "Books" }))
                 .Generate(100);
             modelBuilder.Entity<Product>().HasData(productFaker);
 

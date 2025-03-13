@@ -14,8 +14,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="LoginWindow.xaml" />
+    <None Remove="Moderator\ModeratorProductListPage.xaml" />
+    <None Remove="Moderator\ModeratorUserListPage.xaml" />
+    <None Remove="Maker\MakerPage.xaml" />
     <None Remove="Moderator\ModeratorWindow.xaml" />
     <None Remove="ProfilePage.xaml" />
+    <None Remove="ProductPage.xaml" />
+    <None Remove="User\UserPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="ProfilePage.xaml">
+    <Page Update="ProductPage.xaml">
+    <Page Update="Moderator\ModeratorProductListPage.xaml">
+    <Page Update="User\UserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Moderator\ModeratorUserListPage.xaml">
+    <Page Update="Maker\MakerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
