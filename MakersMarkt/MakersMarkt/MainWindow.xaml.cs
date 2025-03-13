@@ -1,3 +1,4 @@
+using MakersMarkt.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -23,12 +24,23 @@ namespace MakersMarkt
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        public static Frame mainFrame { get; private set; }
         public MainWindow()
         {
             this.InitializeComponent();
-            mainFrame = MainFrame;
-            MainFrame.Navigate(typeof(LoginPage));
+            using (var db = new AppDbContext())
+            {
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+            }
+
+            var baseWindow = new LoginWindow();
+
+            baseWindow.Activate();
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                this.Close();
+            });
         }
+
     }
 }
