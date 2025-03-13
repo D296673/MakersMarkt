@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -14,12 +14,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="LoginWindow.xaml" />
-    <None Remove="Moderator\ModeratorProductListPage.xaml" />
-    <None Remove="Moderator\ModeratorUserListPage.xaml" />
-    <None Remove="Maker\MakerPage.xaml" />
     <None Remove="Moderator\ModeratorWindow.xaml" />
+    <None Remove="ProductDetailPage.xaml" />
     <None Remove="ProductPage.xaml" />
-    <None Remove="User\UserPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,15 +47,12 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ProductPage.xaml">
-    <Page Update="Moderator\ModeratorProductListPage.xaml">
-    <Page Update="User\UserPage.xaml">
+    <Page Update="ProductDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Moderator\ModeratorUserListPage.xaml">
-    <Page Update="Maker\MakerPage.xaml">
+    <Page Update="ProductPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
