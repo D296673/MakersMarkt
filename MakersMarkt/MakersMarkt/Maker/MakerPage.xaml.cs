@@ -16,26 +16,16 @@ using Microsoft.UI.Xaml.Navigation;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace MakersMarkt.Moderator
+namespace MakersMarkt.Maker
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ModeratorPage : Page
+    public sealed partial class MakerPage : Page
     {
-        public ModeratorPage()
+        public MakerPage()
         {
             this.InitializeComponent();
-        }
-
-        private void UserListButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Moderator.ModeratorUserListPage));
-        }
-
-        private void ProductListButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Moderator.ModeratorProductListPage));
         }
     }
 }
