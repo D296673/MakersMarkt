@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MakersMarkt.Data
 {
-    public class Role
+    class Role
     {
         public int Id { get; set; }
         public string Name { get; set; }
