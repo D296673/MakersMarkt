@@ -9,11 +9,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
         <StackPanel>
             <Frame x:Name="MainFrame" />
         </StackPanel>
