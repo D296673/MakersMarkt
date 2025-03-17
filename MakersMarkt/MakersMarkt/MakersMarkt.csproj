@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="User\" />
+  </ItemGroup>
     <PropertyGroup>
         <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
