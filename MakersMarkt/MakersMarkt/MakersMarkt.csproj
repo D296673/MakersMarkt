@@ -14,11 +14,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="LoginWindow.xaml" />
-    <None Remove="Moderator\ModeratorWindow.xaml" />
+    <None Remove="Moderator\ModeratorWindow.xaml" /> 
+	<None Remove="RegisterPage.xaml" />
+    <None Remove="User\UserPage.xaml" />
     <None Remove="ProductDetailPage.xaml" />
     <None Remove="ProductPage.xaml" />
-    <None Remove="RegisterPage.xaml" />
-    <None Remove="User\UserPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,13 +49,17 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ProductDetailPage.xaml">
     <Page Update="RegisterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="User\UserPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+    <ItemGroup>
+    <Page Update="ProductDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
