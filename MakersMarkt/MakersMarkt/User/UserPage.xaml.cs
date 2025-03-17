@@ -26,6 +26,7 @@ namespace MakersMarkt.User
         public UserPage()
         {
             this.InitializeComponent();
+
         }
     }
 }

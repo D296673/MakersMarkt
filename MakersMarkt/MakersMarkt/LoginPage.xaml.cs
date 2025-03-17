@@ -68,7 +68,7 @@ namespace MakersMarkt
                             break;
 
                         case 3:
-                            this.Frame.Navigate(typeof(User.UserPage));
+                            this.Frame.Navigate(typeof(ProductPage));
                             break;
                     }
                 }
