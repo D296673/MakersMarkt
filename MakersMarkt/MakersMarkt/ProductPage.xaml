@@ -6,25 +6,30 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Padding="20">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBox x:Name="SearchBox" PlaceholderText="Search products..." Width="300" TextChanged="SearchBox_TextChanged"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-                <ComboBox x:Name="CategoryDropdown" Width="150" SelectionChanged="CategoryDropdown_SelectionChanged"/>
-            </StackPanel>
-
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="500">
-                <ListView x:Name="ProductListView" ItemsSource="{x:Bind Products}" SelectionChanged="ProductListView_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:Product">
-                            <StackPanel Margin="10">
-                                <TextBlock Text="{x:Bind Name}" FontSize="20" FontWeight="Bold"/>
-                                <TextBlock Text="{x:Bind Description}" Foreground="Gray"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="SearchBox" PlaceholderText="Search products..." Width="300" TextChanged="SearchBox_TextChanged"/>
+            <ComboBox x:Name="CategoryDropdown" Width="150" SelectionChanged="CategoryDropdown_SelectionChanged"/>
         </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ListView x:Name="ProductListView" ItemsSource="{x:Bind Products}" SelectionChanged="ProductListView_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Product">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="{x:Bind Name}" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind Description}" Foreground="Gray"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <Button Grid.Row="2" Content="Log Out" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="LogoutButton_Click"/>
     </Grid>
+
 </Page>

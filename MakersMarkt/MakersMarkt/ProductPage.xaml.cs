@@ -80,5 +80,10 @@ namespace MakersMarkt
                 ProductListView.ItemsSource = Products.Where(p => p.TypeId == selectedTypeId).ToList();
             }
         }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LoginPage));
+        }
     }
 }

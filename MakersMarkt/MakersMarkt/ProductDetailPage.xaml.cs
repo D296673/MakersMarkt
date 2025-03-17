@@ -27,15 +27,12 @@ namespace MakersMarkt
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
+            this.Frame.Navigate(typeof(ProductPage));
         }
 
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
-            // Empty for now
+            // empty for now
         }
     }
 }
