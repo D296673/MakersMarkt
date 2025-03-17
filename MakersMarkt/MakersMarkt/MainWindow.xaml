@@ -9,8 +9,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        <StackPanel>
-            <Frame x:Name="MainFrame" />
-        </StackPanel>
+        <Frame x:Name="MainFrame" />
     </Grid>
 </Window>
