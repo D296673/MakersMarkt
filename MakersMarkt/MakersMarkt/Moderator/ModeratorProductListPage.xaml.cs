@@ -1,3 +1,4 @@
+using MakersMarkt.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,17 @@ namespace MakersMarkt.Moderator
         public ModeratorProductListPage()
         {
             this.InitializeComponent();
+
+            LoadProducts();
+        }
+
+        private void LoadProducts()
+        {
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products.ToList();
+                ProductListView.ItemsSource = products;
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

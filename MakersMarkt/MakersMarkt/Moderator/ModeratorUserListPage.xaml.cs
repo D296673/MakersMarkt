@@ -1,3 +1,5 @@
+using MakersMarkt.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -7,6 +9,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,9 +26,23 @@ namespace MakersMarkt.Moderator
     /// </summary>
     public sealed partial class ModeratorUserListPage : Page
     {
+        private MakersMarkt.Data.User selectedUser;
         public ModeratorUserListPage()
         {
             this.InitializeComponent();
+
+            LoadUsers(); 
+        }
+
+        private void LoadUsers()
+        {
+            using (var db = new AppDbContext())
+            {
+                var users = db.Users.Include(u => u.Role).ToList();
+                UserListView.ItemsSource = users;
+            }
+        }
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
