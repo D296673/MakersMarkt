@@ -43,7 +43,62 @@ namespace MakersMarkt.Moderator
             }
         }
 
+        private void UserListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedUser = (MakersMarkt.Data.User)UserListView.SelectedItem;
+
+            if (selectedUser != null)
+            {
+                ApprovedRadio.IsChecked = selectedUser.IsApproved;
+                RejectedRadio.IsChecked = selectedUser.IsRejected;
+                DeleteUserButton.IsEnabled = selectedUser.IsRejected;
+            }
         }
+
+        private void ApprovalStatusChanged(object sender, RoutedEventArgs e)
+        {
+            if (selectedUser != null)
+            {
+                selectedUser.IsApproved = ApprovedRadio.IsChecked == true;
+                selectedUser.IsRejected = RejectedRadio.IsChecked == true;
+
+                DeleteUserButton.IsEnabled = selectedUser.IsRejected;
+
+                SaveUserApprovalStatus(selectedUser);
+            }
+        }
+
+        private void SaveUserApprovalStatus(MakersMarkt.Data.User user)
+        {
+            using (var db = new AppDbContext())
+            {
+                var dbUser = db.Users.FirstOrDefault(u => u.Id == user.Id);
+                if (dbUser != null)
+                {
+                    dbUser.IsApproved = user.IsApproved;
+                    dbUser.IsRejected = user.IsRejected;
+                    db.SaveChanges();
+                }
+            }
+
+            Console.WriteLine($"Gebruiker {user.Name} goedkeuringsstatus opgeslagen: " +
+                              $"Goedgekeurd = {user.IsApproved}, Afgekeurd = {user.IsRejected}");
+        }
+
+        private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedUser != null && selectedUser.IsRejected)
+            {
+                var users = (ObservableCollection<MakersMarkt.Data.User>)UserListView.ItemsSource;
+                users.Remove(selectedUser);
+
+                Console.WriteLine($"Gebruiker {selectedUser.Name} is verwijderd.");
+
+                selectedUser = null;
+                DeleteUserButton.IsEnabled = false;
+            }
+        }
+
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

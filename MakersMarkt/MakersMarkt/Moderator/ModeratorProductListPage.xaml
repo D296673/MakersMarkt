@@ -18,10 +18,36 @@
         <StackPanel Grid.Row="0">
             <Button Content="Back"
                     Click="BackButton_Click" />
-            <TextBlock Text="Admin Productlist Page"
+            <TextBlock Text="Admin Product List Page"
                        FontSize="50"
                        Margin="10"
                        TextAlignment="Center" />
         </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Column="0"
+                      x:Name="ProductListView"
+                      IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="2">
+                            <TextBlock Text="{Binding Name}"
+                                       FontSize="20" />
+                            <TextBlock Text="{Binding Price}"
+                                       FontSize="12"
+                                       FontWeight="Light"
+                                       Foreground="Gray"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

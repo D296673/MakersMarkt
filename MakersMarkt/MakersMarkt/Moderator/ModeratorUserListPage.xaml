@@ -33,6 +33,7 @@
             <ListView Grid.Column="0"
                       x:Name="UserListView"
                       IsItemClickEnabled="True"
+                      SelectionChanged="UserListView_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Spacing="2">
@@ -48,5 +49,28 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <StackPanel Grid.Column="1" Spacing="20">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="100"
+                            HorizontalAlignment="Center">
+                    <RadioButton Content="Goedgekeurd"
+                                 x:Name="ApprovedRadio"
+                                 IsChecked="{Binding IsApproved, Mode=TwoWay}"
+                                 Checked="ApprovalStatusChanged" />
+                    <RadioButton Content="Afgekeurd"
+                                 x:Name="RejectedRadio"
+                                 IsChecked="{Binding IsRejected, Mode=TwoWay}"
+                                 Checked="ApprovalStatusChanged" />
+                </StackPanel>
+
+                <Button Content="Delete"
+                        x:Name="DeleteUserButton"
+                        Click="DeleteUser_Click"
+                        Background="Red"
+                        Foreground="White"
+                        IsEnabled="False"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
