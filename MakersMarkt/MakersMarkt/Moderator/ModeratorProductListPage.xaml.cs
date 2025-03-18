@@ -120,6 +120,31 @@ namespace MakersMarkt.Moderator
             }
         }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedProduct != null)
+            {
+                using (var db = new AppDbContext())
+                {
+                    db.Products.Remove(selectedProduct);
+                    db.SaveChanges();
+                }
+
+                Products.Remove(selectedProduct);
+
+                productNameTextBox.Text = string.Empty;
+                productDescriptionTextBox.Text = string.Empty;
+                productPriceTextBox.Text = string.Empty;
+                typeComboBox.SelectedIndex = -1;
+                makersComboBox.SelectedIndex = -1;
+
+                selectedProduct = null;
+
+                Console.WriteLine("Product is verwijderd.");
+            }
+        }
+
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
