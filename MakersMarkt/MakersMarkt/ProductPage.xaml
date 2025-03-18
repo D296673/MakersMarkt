@@ -16,7 +16,7 @@
         <!-- Search & Filter Section -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
             <!-- Search Box -->
-            <TextBox 
+        <TextBox 
             x:Name="SearchBox" 
             PlaceholderText="Search products..." 
             Width="300" 
@@ -25,7 +25,7 @@
             BorderBrush="#FFDFAF2B" 
             Background="White" 
             Foreground="#FF4C3000"
-            PlaceholderForeground="#FF977500"
+            PlaceholderForeground="#FF4C3000"
             CornerRadius="8"
             TextChanged="SearchBox_TextChanged"/>
 
