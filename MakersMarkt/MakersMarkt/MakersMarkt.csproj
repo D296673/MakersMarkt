@@ -16,9 +16,9 @@
     <None Remove="LoginWindow.xaml" />
     <None Remove="Moderator\ModeratorWindow.xaml" /> 
 	<None Remove="RegisterPage.xaml" />
-    <None Remove="User\UserPage.xaml" />
     <None Remove="ProductDetailPage.xaml" />
     <None Remove="ProductPage.xaml" />
+    <None Remove="User\UserPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,7 +69,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="User\" />
+    <Page Update="User\UserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
     <PropertyGroup>
         <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
