@@ -94,6 +94,29 @@ namespace MakersMarkt.Moderator
             makersComboBox.SelectedValue = selectedProduct.MakerId;
         }
 
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedProduct != null)
+            {
+                selectedProduct.Name = productNameTextBox.Text;
+                selectedProduct.Description = productDescriptionTextBox.Text;
+                selectedProduct.Price = decimal.Parse(productPriceTextBox.Text);
+                selectedProduct.TypeId = (int)typeComboBox.SelectedValue;
+                selectedProduct.MakerId = (int)makersComboBox.SelectedValue;
+
+                using (var db = new AppDbContext())
+                {
+                    db.Products.Update(selectedProduct);
+                    db.SaveChanges();
+                }
+
+                var index = Products.IndexOf(selectedProduct);
+                if (index >= 0)
+                {
+                    Products[index] = selectedProduct;
+                }
+
+                Console.WriteLine($"Product {selectedProduct.Name} is bijgewerkt.");
             }
         }
 

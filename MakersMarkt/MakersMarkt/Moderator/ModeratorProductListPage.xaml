@@ -65,6 +65,13 @@
                               SelectedValuePath="Id" />
                 </StackPanel>
 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="50">
+                    <Button Content="Save"
+                            Click="SaveButton_Click" />
+                    <Button Content="Delete"
+                            Click="DeleteButton_Click" />
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>
