@@ -42,52 +42,101 @@ namespace MakersMarkt
                 ErrorTextBlock.Text = "Vul alle velden in";
                 return;
             }
-            using (var db = new AppDbContext())
+            else if (PasswordTextBox.Password.Length < 8 || PasswordTextBox.Password.Length > 20)
             {
-                var users = db.Users.FirstOrDefault(u => u.Name == UserNameTextBox.Text);
-                var passwords = db.Users.FirstOrDefault(u => u.Password == PasswordTextBox.Password);
-                if (users != null)
+                ErrorTextBlock.Text = "Wachtwoord moet tussen de 8 en 20 karakters bevatten";
+                return;
+            }
+            else if (PasswordTextBox.Password.Any(char.IsDigit) == false)
+            {
+                ErrorTextBlock.Text = "Wachtwoord moet minimaal 1 cijfer bevatten";
+                return;
+            }
+            else if (PasswordTextBox.Password.Any(char.IsUpper) == false)
+            {
+                ErrorTextBlock.Text = "Wachtwoord moet minimaal 1 hoofdletter bevatten";
+                return;
+            }
+            else if (PasswordTextBox.Password.Any(char.IsLower) == false)
+            {
+                ErrorTextBlock.Text = "Wachtwoord moet minimaal 1 kleine letter bevatten";
+                return;
+            }
+            else if (PasswordTextBox.Password.Any(char.IsSymbol) == false)
+            {
+                ErrorTextBlock.Text = "Wachtwoord moet minimaal 1 speciaal karakter bevatten";
+                return;
+            }
+            else if (PasswordTextBox.Password.Any(char.IsWhiteSpace) == true)
+            {
+                ErrorTextBlock.Text = "Wachtwoord mag geen spaties bevatten";
+                return;
+            }
+            else if (UserNameTextBox.Text.Any(char.IsWhiteSpace) == true)
+            {
+                ErrorTextBlock.Text = "Gebruikersnaam mag geen spaties bevatten";
+                return;
+            } else if (UserNameTextBox.Text.Length < 3)
+            {
+                ErrorTextBlock.Text = "Gebruikersnaam moet minimaal 3 karakters bevatten";
+                return;
+            } else if (UserNameTextBox.Text.Length > 20)
+            {
+                ErrorTextBlock.Text = "Gebruikersnaam mag maximaal 20 karakters bevatten";
+                return;
+            }
+            else if (UserNameTextBox.Text.Any(char.IsLetterOrDigit) == false)
+            {
+                ErrorTextBlock.Text = "Gebruikersnaam mag alleen letters en cijfers bevatten";
+                return;
+            }
+                using (var db = new AppDbContext())
                 {
-                    ErrorTextBlock.Text = "Gebruikersnaam is al in gebruik";
-                    return;
-                } else if (passwords != null)
-                {
-                    ErrorTextBlock.Text = "Wachtwoord is al in gebruik";
-                    return;
-                }
-                var passwordHash = LoginPage.HashPassword(PasswordTextBox.Password);
-                if (IsCreatorCheckBox.IsChecked == true)
-                {
-                    RoleId = 2;
-                }
-                else
-                {
-                    RoleId = 3;
-                }
-                var user = new Data.User
-                {
-                    Name = UserNameTextBox.Text,
-                    Password = passwordHash,
-                    RoleId = RoleId,
-                    CreatedAt = DateTime.Now
-                };
-                db.Users.Add(user);
-                db.SaveChanges();
-                if (RoleId == 2)
-                {
-                    var Flag = new ModerationFlag
+                    var users = db.Users.FirstOrDefault(u => u.Name == UserNameTextBox.Text);
+                    var passwords = db.Users.FirstOrDefault(u => u.Password == PasswordTextBox.Password);
+                    if (users != null)
                     {
-                        UserId = user.Id,
-                        ModeratorId = 1,
-                        Category = "Maker",
-                        Reason = "New Maker",
+                        ErrorTextBlock.Text = "Gebruikersnaam is al in gebruik";
+                        return;
+                    }
+                    else if (passwords != null)
+                    {
+                        ErrorTextBlock.Text = "Wachtwoord is al in gebruik";
+                        return;
+                    }
+                    var passwordHash = LoginPage.HashPassword(PasswordTextBox.Password);
+                    if (IsCreatorCheckBox.IsChecked == true)
+                    {
+                        RoleId = 2;
+                    }
+                    else
+                    {
+                        RoleId = 3;
+                    }
+                    var user = new Data.User
+                    {
+                        Name = UserNameTextBox.Text,
+                        Password = passwordHash,
+                        RoleId = RoleId,
                         CreatedAt = DateTime.Now
                     };
-                    db.ModerationFlags.Add(Flag);
+                    db.Users.Add(user);
                     db.SaveChanges();
+                    if (RoleId == 2)
+                    {
+                        var Flag = new ModerationFlag
+                        {
+                            UserId = user.Id,
+                            ModeratorId = 1,
+                            Category = "Maker",
+                            Reason = "New Maker",
+                            CreatedAt = DateTime.Now
+                        };
+                        db.ModerationFlags.Add(Flag);
+                        db.SaveChanges();
+                    }
+                    this.Frame.Navigate(typeof(LoginPage));
                 }
-                this.Frame.Navigate(typeof(LoginPage));
-            }
         }
     }
 }

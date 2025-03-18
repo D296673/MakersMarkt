@@ -27,5 +27,15 @@ namespace MakersMarkt.Moderator
         {
             this.InitializeComponent();
         }
+
+        private void UserListButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Moderator.ModeratorUserListPage));
+        }
+
+        private void ProductListButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Moderator.ModeratorProductListPage));
+        }
     }
 }
