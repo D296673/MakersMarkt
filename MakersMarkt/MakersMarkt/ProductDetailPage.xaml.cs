@@ -45,6 +45,16 @@ namespace MakersMarkt
                     await db.SaveChangesAsync(); // Save changes to the DB
                 }
             }
+            // Display confirmation dialog
+            var dialog = new ContentDialog
+            {
+                Title = "Order Placed",
+                Content = "Your order is now being processed. You will be notified once it's shipped.",
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot // Required for WinUI
+            };
+
+            await dialog.ShowAsync(); // Show message async
         }
 
     }
