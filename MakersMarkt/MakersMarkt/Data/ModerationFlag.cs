@@ -9,10 +9,10 @@ namespace MakersMarkt.Data
     class ModerationFlag
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
-        public int UserId { get; set; }
+        public int? ProductId { get; set; }
+        public int? UserId { get; set; }
         public int? ReviewId { get; set; }
-        public int ModeratorId { get; set; }
+        public int? ModeratorId { get; set; }
         public string Reason { get; set; }
         public string Category { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -28,6 +28,7 @@
                     <TextBlock x:Name="ErrorTextBlock" Foreground="Red" FontSize="20"/>
                 </StackPanel>
                 <Button x:Name="LoginButton" Click="LoginButton_Click"  FontSize="30" Margin="0 25 0 0" Padding="30 10 30 10"  HorizontalAlignment="Center">Login</Button>
+                <Button x:Name="RegisterButton" Click="RegisterButton_Click" FontSize="30" Margin="0 50 0 0" Padding="30 10 30 10" HorizontalAlignment="Center">Register</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -64,11 +64,11 @@ namespace MakersMarkt
                             break;
 
                         case 2:
-                            this.Frame.Navigate(typeof(Maker.MakerPage));
+                            this.Frame.Navigate(typeof(ProductPage));
                             break;
 
                         case 3:
-                            this.Frame.Navigate(typeof(User.UserPage));
+                            this.Frame.Navigate(typeof(ProductPage));
                             break;
                     }
                 }
@@ -77,6 +77,11 @@ namespace MakersMarkt
                     ErrorTextBlock.Text = "Naam of wachtwoord is onjuist";
                 }
             }
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RegisterPage));
         }
     }
 }
