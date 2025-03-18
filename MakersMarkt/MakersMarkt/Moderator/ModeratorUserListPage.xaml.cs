@@ -27,6 +27,7 @@ namespace MakersMarkt.Moderator
     public sealed partial class ModeratorUserListPage : Page
     {
         private MakersMarkt.Data.User selectedUser;
+        public ObservableCollection<MakersMarkt.Data.User> Users { get; set; } = new();
         public ModeratorUserListPage()
         {
             this.InitializeComponent();
@@ -89,15 +90,48 @@ namespace MakersMarkt.Moderator
         {
             if (selectedUser != null && selectedUser.IsRejected)
             {
-                var users = (ObservableCollection<MakersMarkt.Data.User>)UserListView.ItemsSource;
-                users.Remove(selectedUser);
+                using (var db = new AppDbContext())
+                {
+                    var userOrders = db.Orders.Where(o => o.BuyerId == selectedUser.Id || o.SellerId == selectedUser.Id).ToList();
+                    var orderIds = userOrders.Select(o => o.Id).ToList();
 
+                    var relatedNotifications = db.Notifications.Where(n => orderIds.Contains((int)n.OrderId)).ToList();
+                    db.Notifications.RemoveRange(relatedNotifications);
+                    db.SaveChanges();
+
+                    db.Orders.RemoveRange(userOrders);
+                    db.SaveChanges();
+
+                    var relatedFlagsAsModerator = db.ModerationFlags.Where(f => f.ModeratorId == selectedUser.Id);
+                    var relatedFlagsAsUser = db.ModerationFlags.Where(f => f.UserId == selectedUser.Id);
+
+                    var relatedFlagsWithReview = db.ModerationFlags.Where(f => f.ReviewId.HasValue);
+                    db.ModerationFlags.RemoveRange(relatedFlagsWithReview);
+                    db.SaveChanges();
+
+                    db.ModerationFlags.RemoveRange(relatedFlagsAsModerator);
+                    db.ModerationFlags.RemoveRange(relatedFlagsAsUser);
+                    db.SaveChanges();
+
+                    var userToDelete = db.Users.FirstOrDefault(u => u.Id == selectedUser.Id);
+                    if (userToDelete != null)
+                    {
+                        db.Users.Remove(userToDelete);
+                        db.SaveChanges();
+                    }
+                }
+
+                Users.Remove(selectedUser);
                 Console.WriteLine($"Gebruiker {selectedUser.Name} is verwijderd.");
 
                 selectedUser = null;
                 DeleteUserButton.IsEnabled = false;
+
+                LoadUsers();
             }
         }
+
+
 
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
