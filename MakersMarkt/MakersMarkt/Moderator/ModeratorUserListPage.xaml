@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="MakersMarkt.Moderator.ModeratorUserListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MakersMarkt.Moderator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Button Content="Back"
+                    Click="BackButton_Click" />
+            <TextBlock Text="Admin User List Page"
+                       FontSize="50"
+                       Margin="10"
+                       TextAlignment="Center" />
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Column="0"
+                      x:Name="UserListView"
+                      IsItemClickEnabled="True"
+                      SelectionChanged="UserListView_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="2">
+                            <TextBlock Text="{Binding Name}"
+                                       FontSize="20" />
+                            <TextBlock Text="{Binding Role.Name}"
+                                       FontSize="12"
+                                       FontWeight="Light"
+                                       Foreground="Gray"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackPanel Grid.Column="1" Spacing="20">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="100"
+                            HorizontalAlignment="Center">
+                    <RadioButton Content="Goedgekeurd"
+                                 x:Name="ApprovedRadio"
+                                 IsChecked="{Binding IsApproved, Mode=TwoWay}"
+                                 Checked="ApprovalStatusChanged" />
+                    <RadioButton Content="Afgekeurd"
+                                 x:Name="RejectedRadio"
+                                 IsChecked="{Binding IsRejected, Mode=TwoWay}"
+                                 Checked="ApprovalStatusChanged" />
+                </StackPanel>
+
+                <Button Content="Delete"
+                        x:Name="DeleteUserButton"
+                        Click="DeleteUser_Click"
+                        Background="Red"
+                        Foreground="White"
+                        IsEnabled="False"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
