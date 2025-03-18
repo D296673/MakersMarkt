@@ -62,11 +62,6 @@ namespace MakersMarkt
                 ErrorTextBlock.Text = "Wachtwoord moet minimaal 1 kleine letter bevatten";
                 return;
             }
-            else if (PasswordTextBox.Password.Any(char.IsSymbol) == false)
-            {
-                ErrorTextBlock.Text = "Wachtwoord moet minimaal 1 speciaal karakter bevatten";
-                return;
-            }
             else if (PasswordTextBox.Password.Any(char.IsWhiteSpace) == true)
             {
                 ErrorTextBlock.Text = "Wachtwoord mag geen spaties bevatten";
