@@ -1,4 +1,5 @@
 using MakersMarkt.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -8,6 +9,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,19 +26,74 @@ namespace MakersMarkt.Moderator
     /// </summary>
     public sealed partial class ModeratorProductListPage : Page
     {
+        public ObservableCollection<MakersMarkt.Data.User> Makers { get; set; }
+        public ObservableCollection<MakersMarkt.Data.Type> Types { get; set; }
+        public ObservableCollection<Product> Products { get; set; }
+
+        private Product selectedProduct;
         public ModeratorProductListPage()
         {
             this.InitializeComponent();
 
+            Makers = new ObservableCollection<MakersMarkt.Data.User>();
+            Types = new ObservableCollection<Data.Type>();
+
             LoadProducts();
+            LoadMakers();
+            LoadTypes();
         }
 
         private void LoadProducts()
         {
             using (var db = new AppDbContext())
             {
-                var products = db.Products.ToList();
-                ProductListView.ItemsSource = products;
+                var products = db.Products.Include(u => u.Type).ToList();
+                Products = new ObservableCollection<Product>(products);
+                ProductListView.ItemsSource = Products;
+            }
+        }
+
+        private void LoadTypes()
+        {
+            using (var db = new AppDbContext())
+            {
+                Types.Clear();
+
+                foreach (var type in db.Types.ToList())
+                {
+                    Types.Add(type);
+                }
+            }
+        }
+
+        private void LoadMakers()
+        {
+            using (var db = new AppDbContext())
+            {
+                Makers.Clear();
+                var makerRoleId = db.Roles.FirstOrDefault(r => r.Name == "Maker")?.Id;
+
+                if (makerRoleId.HasValue)
+                {
+                    foreach (var user in db.Users.Where(u => u.RoleId == makerRoleId.Value))
+                    {
+                        Makers.Add(user);
+                    }
+                }
+            }
+        }
+
+        private void ProductListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            selectedProduct = (Product)e.ClickedItem;
+
+            productNameTextBox.Text = selectedProduct.Name;
+            productDescriptionTextBox.Text = selectedProduct.Description;
+            productPriceTextBox.Text = selectedProduct.Price.ToString();
+            typeComboBox.SelectedValue = selectedProduct.TypeId;
+            makersComboBox.SelectedValue = selectedProduct.MakerId;
+        }
+
             }
         }
 

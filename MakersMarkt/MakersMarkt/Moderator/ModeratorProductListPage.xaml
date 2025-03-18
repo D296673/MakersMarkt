@@ -32,7 +32,8 @@
 
             <ListView Grid.Column="0"
                       x:Name="ProductListView"
-                      IsItemClickEnabled="True">
+                      IsItemClickEnabled="True"
+                      ItemClick="ProductListView_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"
@@ -48,6 +49,22 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <StackPanel Spacing="50" Grid.Column="1">
+                <StackPanel Spacing="20">
+                    <TextBox x:Name="productNameTextBox" />
+                    <TextBox x:Name="productDescriptionTextBox" />
+                    <TextBox x:Name="productPriceTextBox" />
+                    <ComboBox x:Name="typeComboBox"
+                              ItemsSource="{x:Bind Types, Mode=OneWay}"
+                              DisplayMemberPath="Name"
+                              SelectedValuePath="Id" />
+                    <ComboBox x:Name="makersComboBox"
+                              ItemsSource="{x:Bind Makers, Mode=OneWay}"
+                              DisplayMemberPath="Name"
+                              SelectedValuePath="Id" />
+                </StackPanel>
+
         </Grid>
     </Grid>
 </Page>
