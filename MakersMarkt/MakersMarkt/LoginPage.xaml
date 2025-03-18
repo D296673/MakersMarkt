@@ -34,37 +34,33 @@
             <!-- Username Field -->
             <StackPanel>
                 <TextBlock Text="Gebruikersnaam:" 
-                           Foreground="Black" 
+                           Foreground="#FFB74D" 
                            FontSize="18"/>
                 <TextBox x:Name="NameTextBox" 
-                         Width="350" 
+                         Width="335" 
                          FontSize="16" 
                          Padding="10" 
                          BorderBrush="#FFDFAF2B" 
                          BorderThickness="1" 
                          CornerRadius="8" 
                          Background="#FFF8E1" 
-                         Foreground="Black"
-                         FocusVisualPrimaryBrush="Transparent" 
-                         FocusVisualSecondaryBrush="Transparent"/>
+                         Foreground="Black"/>
             </StackPanel>
 
             <!-- Password Field -->
             <StackPanel>
                 <TextBlock Text="Wachtwoord:" 
-                           Foreground="Black" 
+                           Foreground="#FFB74D" 
                            FontSize="18"/>
                 <PasswordBox x:Name="PasswordTextBox" 
-                             Width="350" 
+                             Width="335" 
                              FontSize="16" 
                              Padding="10" 
                              BorderBrush="#FFDFAF2B" 
                              BorderThickness="1" 
                              CornerRadius="8" 
                              Background="#FFF8E1" 
-                             Foreground="Black"
-                             FocusVisualPrimaryBrush="Transparent" 
-                             FocusVisualSecondaryBrush="Transparent"/>
+                             Foreground="Black"/>
                 <TextBlock x:Name="ErrorTextBlock" 
                            Foreground="Red" 
                            FontSize="16" 
@@ -81,7 +77,7 @@
                     Background="#FFB74D" 
                     Foreground="White" 
                     CornerRadius="8" 
-                    MinWidth="200" MaxWidth="350"/>
+                    MinWidth="200" MaxWidth="335"/>
 
             <Button x:Name="RegisterButton" 
                     Content="Register" 
@@ -90,9 +86,9 @@
                     FontSize="18" 
                     Padding="12" 
                     Background="#FFD180" 
-                    Foreground="Black" 
+                    Foreground="White" 
                     CornerRadius="8" 
-                    MinWidth="200" MaxWidth="350"/>
+                    MinWidth="200" MaxWidth="335"/>
         </StackPanel>
     </Grid>
 </Page>
