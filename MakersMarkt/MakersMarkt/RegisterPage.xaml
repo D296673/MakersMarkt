@@ -52,6 +52,10 @@
                 <Button x:Name="RegisterButton" Click="RegisterButton_Click" Content="Register" FontSize="22" 
                         Padding="15,10" Width="200" HorizontalAlignment="Center" Background="#FFB74D" Foreground="#4E4A28" 
                         CornerRadius="8" Margin="0,25,0,0"/>
+                <!-- Go Back Button -->
+                <Button x:Name="GoBackButton" Click="GoBackButton_Click" Content="Terug naar Login" FontSize="22" 
+                        Padding="15,10" Width="200" HorizontalAlignment="Center" Background="#FFB74D" Foreground="#4E4A28" 
+                        CornerRadius="8" Margin="0,10,0,0"/>
             </StackPanel>
         </StackPanel>
     </Grid>

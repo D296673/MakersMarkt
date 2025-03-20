@@ -23,7 +23,13 @@
 
             <TextBlock Text="Joined:" FontWeight="SemiBold" Foreground="Black"/>
             <TextBlock x:Name="UserCreatedAtText" FontSize="18" Foreground="Black"/>
-
+            
+            <Button Content="Mijn Bestellingen" Click="Orders_Click" 
+                    Background="#E74C3C" Foreground="White" x:Name="OrdersButton"
+                    HorizontalAlignment="Stretch" CornerRadius="8" Visibility="Collapsed"/>
+            <Button Content="Maak nieuw Product" Click="CreateProduct_Click" 
+                    Background="#E74C3C" Foreground="White" x:Name="CreateProductButton"
+                    HorizontalAlignment="Stretch" CornerRadius="8" Visibility="Collapsed"/>
             <Button Content="Log Out" Click="Logout_Click" 
                     Background="#E74C3C" Foreground="White"
                     HorizontalAlignment="Stretch" CornerRadius="8"/>

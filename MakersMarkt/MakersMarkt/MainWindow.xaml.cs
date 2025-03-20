@@ -32,7 +32,7 @@ namespace MakersMarkt
             this.InitializeComponent();
             using (var db = new AppDbContext())
             {
-                db.Database.EnsureDeleted();
+                //db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
             }
             var hWnd = WindowNative.GetWindowHandle(this);

@@ -39,10 +39,28 @@ namespace MakersMarkt.User
                 // Handle case where no user is logged in (optional: navigate to login)
                 return;
             }
+            var roleId = user.RoleId;
+            // Show/hide buttons based on user 
+            if (roleId == 2)
+            {
+                if (user.IsApproved == true)
+                {
+                    CreateProductButton.Visibility = Visibility.Visible;
+                    OrdersButton.Visibility = Visibility.Visible;
+                }
+            }
 
             // Set user info
             UserNameText.Text = user.Name;
-            UserRoleText.Text = user.Role?.Name ?? "Unknown";
+            using (var db = new AppDbContext())
+            {
+                var role = db.Roles.FirstOrDefault(r => r.Id == roleId);
+                if (role != null)
+                {
+                    var Rolename = role.Name;
+                    UserRoleText.Text = Rolename ?? "Unknown";
+                }
+            }
             UserCreatedAtText.Text = user.CreatedAt.ToString("MMMM dd, yyyy");
 
             // Load user’s products
@@ -57,6 +75,15 @@ namespace MakersMarkt.User
         {
             Data.User.LoggedInUser = null; // Clear session
             Frame.Navigate(typeof(LoginPage)); // Redirect to login
+        }
+
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CreateProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Maker.MakerCreateProductPage));
         }
     }
 
