@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using Windows.System;
 
 namespace MakersMarkt
 {
@@ -38,12 +39,22 @@ namespace MakersMarkt
 
             using (var db = new AppDbContext())
             {
+                var user = Data.User.LoggedInUser.Id;
                 var product = await db.Products.FindAsync(SelectedProduct.Id);
                 if (product != null)
                 {
                     product.Status = "Order Processing";
                     await db.SaveChangesAsync(); // Save changes to the DB
                 }
+                var order = new Order
+                {
+                    ProductId = product.Id,
+                    BuyerId = user,
+                    SellerId = product.MakerId,
+                    Status = "Pending",
+                };
+                db.Orders.Add(order);
+                await db.SaveChangesAsync();
             }
             // Display confirmation dialog
             var dialog = new ContentDialog
