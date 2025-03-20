@@ -51,6 +51,9 @@ namespace MakersMarkt.Maker
                     Price = Convert.ToDecimal(ProductPriceTextBox.Text),
                     TypeId = db.Types.FirstOrDefault(t => t.Name == ProductTypeComboBox.SelectedItem.ToString()).Id,
                     Complexity = ProductComplexityTextBox.Text,
+                    Durability = Convert.ToInt32(ProductDurabilityTextBox.Text),
+                    ProductionTime = Convert.ToDateTime(ProductProductionTimeTextBox.Text),
+                    Material = ProductMaterialTextBox.Text,
                     UniqueFeatures = ProductUniqueFeaturesTextBox.Text,
                     MakerId = Data.User.LoggedInUser.Id,
                     CreatedAt = DateTime.Now
